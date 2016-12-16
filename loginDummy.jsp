@@ -33,7 +33,7 @@ v<!DOCTYPE html>
       <%
       request.setCharacterEncoding("UTF-8");
       if (request.getParameter("email") != null) {
-         DBManager db = new DBManager(DBI.getInstance("210.117.181.241", "BreadShuttle", "db2016", "rlawhddlr123"));
+         DBManager db = new DBManager(DBI.getInstance("manycore.jbnu.ac.kr", "BreadShuttle", "db2016", "rlawhddlr123"));
          LogIn login = new LogIn();
 
          try {
@@ -48,7 +48,7 @@ v<!DOCTYPE html>
             %>
             <script type="text/javascript">
             alert("아이디 혹은 비밀번호를 확인해주세요.");
-            window.location.href = "http://210.117.181.241:8080/BreadShuttle/";
+            window.location.href = "http://manycore.jbnu.ac.kr:8080/BreadShuttle/";
             </script>
             <%
          }

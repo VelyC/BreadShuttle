@@ -34,7 +34,7 @@
       request.setCharacterEncoding("UTF-8");
 
       if (session.getAttribute("auth") != null) {
-         DBManager db = new DBManager(DBI.getInstance("210.117.181.241", "BreadShuttle", "db2016", "rlawhddlr123"));
+         DBManager db = new DBManager(DBI.getInstance("manycore.jbnu.ac.kr", "BreadShuttle", "db2016", "rlawhddlr123"));
          LogIn login = new LogIn();
          Modify modify = new Modify();
          int auth = (int) session.getAttribute("auth");
@@ -44,7 +44,7 @@
       } else {
          %>
          <script type="text/javascript">
-            window.location.href = "http://210.117.181.241:8080/BreadShuttle/";
+            window.location.href = "http://manycore.jbnu.ac.kr:8080/BreadShuttle/";
          </script>
          <%
       }

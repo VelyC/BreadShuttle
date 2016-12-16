@@ -37,7 +37,7 @@
          response.sendRedirect("/BreadShuttle/");
       } else {
          String auth = (String) request.getParameter("stORba");
-         DBManager db = new DBManager (DBI.getInstance("210.117.181.241", "BreadShuttle", "db2016", "rlawhddlr123"));
+         DBManager db = new DBManager (DBI.getInstance("manycore.jbnu.ac.kr", "BreadShuttle", "db2016", "rlawhddlr123"));
          User us = null;
          if (auth.equals("student")) {
             us = new StudentAccount(
@@ -72,7 +72,7 @@
             %>
             <script type="text/javascript">
             alert("아이디가 이미 존재하거나 회원정보가 중복 됩니다.");
-            window.location.href = "http://210.117.181.241:8080/BreadShuttle/";
+            window.location.href = "http://manycore.jbnu.ac.kr:8080/BreadShuttle/";
             </script>
             <%
          } else {
@@ -80,7 +80,7 @@
             %>
             <script type="text/javascript">
             alert("회원가입을 축하합니다.");
-            window.location.href = "http://210.117.181.241:8080/BreadShuttle/";
+            window.location.href = "http://manycore.jbnu.ac.kr:8080/BreadShuttle/";
             </script>
             <%
          }
