@@ -20,26 +20,26 @@ public class SignUp {
             new String[] {user.getUid(), user.getPwd(), Integer.toString(1)}
             );
             DBQuery.insert(
-            myDB.getConnection(),
-            "insert into student values (?,?,?,?,?,?)",
-            new String[] {
-               ((Student) user).getName(),
-               ((Student) user).getUid(),
-               Integer.toString(((Student) user).getGrade()),
-               Integer.toString(((Student) user).getSClass()),
-               Integer.toString(((Student) user).getStNum()),
-               ((Student) user).getTel()
-            }
+               myDB.getConnection(),
+               "insert into student values (?,?,?,?,?,?)",
+               new String[] {
+                  ((Student) user).getName(),
+                  ((Student) user).getUid(),
+                  Integer.toString(((Student) user).getGrade()),
+                  Integer.toString(((Student) user).getSClass()),
+                  Integer.toString(((Student) user).getStNum()),
+                  ((Student) user).getTel()
+               }
             );
             DBQuery.insert(
-            myDB.getConnection(),
-            "insert into account values (?,?,?,?)",
-            new String[] {
-               ((StudentAccount) user).getUid(),
-               ((StudentAccount) user).getAccount(),
-               Integer.toString(((StudentAccount) user).getPoint()),
-               ((StudentAccount) user).getBankName()
-            }
+               myDB.getConnection(),
+               "insert into account values (?,?,?,?)",
+               new String[] {
+                  ((StudentAccount) user).getUid(),
+                  ((StudentAccount) user).getAccount(),
+                  Integer.toString(((StudentAccount) user).getPoint()),
+                  ((StudentAccount) user).getBankName()
+               }
             );
 
             result = true;

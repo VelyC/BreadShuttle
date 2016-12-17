@@ -16,26 +16,28 @@ public class Modify {
       if (c == StudentAccount.class) {
          try {
             StudentAccount st = (StudentAccount) user;
-            login.user(myDB, user.getUid(), user.getPwd());
+            login.auth(myDB, user.getUid(), user.getPwd());
             try {
                DBQuery.update(
                   myDB.getConnection(),
-                  "update student set name=?,grade=?,class=?,st_num=?,tel=?",
+                  "update student set name=?,grade=?,sclass=?,stnum=?,tel=? where uid=?",
                   new String[] {
                      st.getName(),
                      Integer.toString(st.getGrade()),
                      Integer.toString(st.getSClass()),
                      Integer.toString(st.getStNum()),
-                     st.getTel()
+                     st.getTel(),
+                     st.getUid()
                   }
                );
 
                DBQuery.update(
                   myDB.getConnection(),
-                  "update account set account=?,bank_name=?",
+                  "update account set account=?,bankname=? where uid=?",
                   new String[] {
                      st.getAccount(),
-                     st.getBankName()
+                     st.getBankName(),
+                     st.getUid()
                   }
                );
 
@@ -50,24 +52,26 @@ public class Modify {
       } else if (c == BakeryAccount.class) {
          try {
             BakeryAccount bk = (BakeryAccount) user;
-            login.user(myDB, user.getUid(), user.getPwd());
+            login.auth(myDB, user.getUid(), user.getPwd());
             try {
                DBQuery.update(
                   myDB.getConnection(),
-                  "update bakery set name=?,tel=?,address=?",
+                  "update bakery set name=?,tel=?,address=? where uid=?",
                   new String[] {
                      bk.getName(),
                      bk.getTel(),
-                     bk.getAddress()
+                     bk.getAddress(),
+                     bk.getUid()
                   }
                );
 
                DBQuery.update(
                   myDB.getConnection(),
-                  "update account set account=?,bank_name=?",
+                  "update account set account=?,bankname=? where uid=?",
                   new String[] {
                      bk.getAccount(),
-                     bk.getBankName()
+                     bk.getBankName(),
+                     bk.getUid()
                   }
                );
 

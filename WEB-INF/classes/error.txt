@@ -1,0 +1,20 @@
+2016-08-17 06:08:12//class DB.DBQuery//update
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'bank_name' in 'field list'
+2016-09-17 06:09:18//class DB.DBQuery//update
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'bank_name' in 'field list'
+2016-10-17 06:10:52//class DB.DBQuery//update
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'bank_name' in 'field list'
+2016-10-17 06:10:58//class DB.DBQuery//update
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'bank_name' in 'field list'
+2016-15-17 06:15:29//class DB.DBQuery//update
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'bank_name' in 'field list'
+2016-27-17 06:27:35//class Service.LogIn//auth
+java.sql.SQLException: Illegal operation on empty result set.
+2016-27-17 06:27:36//class DB.DBQuery//update
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'bank_name' in 'field list'
+2016-27-17 06:27:41//class DB.DBQuery//update
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'bank_name' in 'field list'
+2016-29-17 06:29:37//class DB.DBQuery//update
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'bank_name' in 'field list'
+2016-29-17 06:29:46//class DB.DBQuery//update
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'bank_name' in 'field list'

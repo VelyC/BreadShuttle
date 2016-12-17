@@ -81,7 +81,7 @@
                         int auth = 0;
                         User user = null;
                         if (session.getAttribute("auth") != null) {
-                           DBManager db = new DBManager(DBI.getInstance("210.117.181.241", "BreadShuttle", "db2016", "rlawhddlr123"));
+                           DBManager db = new DBManager(DBI.getInstance("manycore.jbnu.ac.kr", "BreadShuttle", "db2016", "rlawhddlr123"));
                            auth = (int) session.getAttribute("auth");
 
                            if (auth == 1) {
@@ -192,7 +192,7 @@
       <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
       <!-- Custom java script -->
-      <script src="resources/js/main.js"></script>
+      <script src="resources/js/index.js"></script>
       <script type="text/javascript">
 
          <% if (auth == 1) { %>

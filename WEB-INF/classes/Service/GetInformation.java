@@ -58,7 +58,7 @@ public class GetInformation {
                rs.getString("name"),
                rs.getString("tel"),
                rs.getString("address"),
-               rs.getString("bank_name"),
+               rs.getString("bankname"),
                rs.getString("account"),
                rs.getInt("point")
             );
@@ -91,10 +91,10 @@ public class GetInformation {
                rs.getInt("auth"),
                rs.getString("name"),
                rs.getInt("grade"),
-               rs.getInt("class"),
-               rs.getInt("st_num"),
+               rs.getInt("sclass"),
+               rs.getInt("stnum"),
                rs.getString("tel"),
-               rs.getString("bank_name"),
+               rs.getString("bankname"),
                rs.getString("account"),
                rs.getInt("point")
             );
@@ -126,8 +126,8 @@ public class GetInformation {
                rs.getInt("auth"),
                rs.getString("name"),
                rs.getInt("grade"),
-               rs.getInt("class"),
-               rs.getInt("st_num"),
+               rs.getInt("sclass"),
+               rs.getInt("stnum"),
                rs.getString("tel")
             );
          } catch (Exception e) {

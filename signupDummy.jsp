@@ -69,6 +69,7 @@
 
          SignUp signUp = new SignUp();
          if (!signUp.user(db, us)) {
+            db.disConnect();
             %>
             <script type="text/javascript">
             alert("아이디가 이미 존재하거나 회원정보가 중복 됩니다.");

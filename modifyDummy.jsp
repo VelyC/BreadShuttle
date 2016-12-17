@@ -4,6 +4,7 @@
 <%@ page import="DB.*" %>
 <%@ page import="Service.*" %>
 <%@ page import="Information.*" %>
+<%@ page import="Error.*" %>
 
 <html lang="ko">
    <head>
@@ -35,10 +36,44 @@
 
       if (session.getAttribute("auth") != null) {
          DBManager db = new DBManager(DBI.getInstance("manycore.jbnu.ac.kr", "BreadShuttle", "db2016", "rlawhddlr123"));
-         LogIn login = new LogIn();
          Modify modify = new Modify();
          int auth = (int) session.getAttribute("auth");
+         User user = null;
 
+         if (auth == 1) {
+            // 학생
+            try {
+               user = new StudentAccount(
+                  (String) request.getParameter("email"),
+                  (String) request.getParameter("password"),
+                  auth,
+                  (String) request.getParameter("name"),
+                  Integer.parseInt(request.getParameter("grade")),
+                  Integer.parseInt(request.getParameter("class")),
+                  Integer.parseInt(request.getParameter("stnum")),
+                  (String) request.getParameter("tel"),
+                  (String) request.getParameter("bankName"),
+                  (String) request.getParameter("account"),
+                  0
+               );
+               modify.user(db, user);
+            } catch (ErrorJsp e) {
+               out.println("<script>alert('"+e.getMessage()+"');");
+               out.println("window.location.href = \"http://manycore.jbnu.ac.kr:8080/BreadShuttle/\";");
+               out.println("</script>");
+            }
+         } else if (auth == 2) {
+            // 빵집
+
+         } else {
+            // 오류
+         }
+         %>
+         <script type="text/javascript">
+            alert("정보 수정 완료.")
+            window.location.href = "http://manycore.jbnu.ac.kr:8080/BreadShuttle/mypage";
+         </script>
+         <%
 
          db.disConnect();
       } else {

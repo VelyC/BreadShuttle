@@ -21,7 +21,7 @@ public class LogIn {
             rs = DBQuery
                   .getResultSet(
                      myDB.getConnection(),
-                     "select auth from user where uid = ? and pwd = password(?)",
+                      "select auth from user where uid=? and pwd = password(?)",
                      qsts);
             rs.next();
             loginResult = rs.getInt(1);
@@ -42,7 +42,7 @@ public class LogIn {
                   break;
             }
          } catch(Exception e) {
-            throw new ErrorJsp(e, LogIn.class, "auth");
+            ErrorJsp error =  new ErrorJsp(e, LogIn.class, "auth");
          }
       }
       return user;
