@@ -20,6 +20,21 @@ public class Bakery extends User {
       };
    }
 
+   public static Bakery[] addElement(Bakery[] array, Bakery element) {
+      Bakery[] newArray = null;
+      if (array != null) {
+         newArray = new Bakery[array.length+1];
+         for (int i = 0; i < array.length; i++) {
+            newArray[i] = array[i];
+         }
+         newArray[newArray.length-1] = element;
+      } else {
+         newArray = new Bakery[]{element};
+      }
+
+      return newArray;
+   }
+
    public String getName() {
       return this.name;
    }

@@ -9,9 +9,9 @@ public class ErrorJsp extends Exception {
 
    public ErrorJsp(Object e, Class where, String func) {
       try {
-         BufferedWriter w = new BufferedWriter(new FileWriter(new File("error.txt"), true));
+         BufferedWriter w = new BufferedWriter(new FileWriter(new File("/home/vely/webapps/BreadShuttle/error.txt"), true));
          long time = System.currentTimeMillis();
-         SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+         SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		   String str = dayTime.format(new Date(time));
          w.write(str);
          w.append("//"+where+"//"+func+"\n");

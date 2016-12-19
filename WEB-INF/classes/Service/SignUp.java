@@ -2,6 +2,7 @@ package Service;
 
 import DB.*;
 import Information.*;
+import Error.*;
 
 public class SignUp {
    public SignUp() {
@@ -17,9 +18,10 @@ public class SignUp {
             DBQuery.insert(
             myDB.getConnection(),
             "insert into user values (?,password(?),?)",
-            new String[] {user.getUid(), user.getPwd(), Integer.toString(1)}
+            new String[] {user.getUid(), user.getPwd(), "1"}
             );
-            DBQuery.insert(
+            try {
+               DBQuery.insert(
                myDB.getConnection(),
                "insert into student values (?,?,?,?,?,?)",
                new String[] {
@@ -30,28 +32,40 @@ public class SignUp {
                   Integer.toString(((Student) user).getStNum()),
                   ((Student) user).getTel()
                }
-            );
-            DBQuery.insert(
+               );
+            } catch (Exception e) {
+               DBQuery.delete(
                myDB.getConnection(),
-               "insert into account values (?,?,?,?)",
+               "delete from user where uid = ?",
                new String[] {
-                  ((StudentAccount) user).getUid(),
-                  ((StudentAccount) user).getAccount(),
-                  Integer.toString(((StudentAccount) user).getPoint()),
-                  ((StudentAccount) user).getBankName()
+                  user.getUid()
                }
+               );
+               throw new ErrorJsp("tranjaction");
+            }
+         } catch (Exception e) {
+            new ErrorJsp (e, SignUp.class, "user-student");
+         } try {
+            DBQuery.insert(
+            myDB.getConnection(),
+            "insert into account values (?,?,?,?)",
+            new String[] {
+               ((StudentAccount) user).getUid(),
+               ((StudentAccount) user).getAccount(),
+               Integer.toString(((StudentAccount) user).getPoint()),
+               ((StudentAccount) user).getBankName()
+            }
             );
-
             result = true;
          } catch (Exception e) {
-
+            new ErrorJsp(e, SignUp.class, "user-student");
          }
       } else if (c == BakeryAccount.class) {
          try {
             DBQuery.insert(
             myDB.getConnection(),
-            "insert into user values (?,?,?)",
-            new String[] {user.getUid(), user.getPwd(), Integer.toString(1)}
+            "insert into user values (?,password(?),?)",
+            new String[] {user.getUid(), user.getPwd(), "2"}
             );
             DBQuery.insert(
             myDB.getConnection(),
@@ -76,7 +90,7 @@ public class SignUp {
 
             result = true;
          } catch (Exception e) {
-
+            new ErrorJsp(e, SignUp.class, "user-bakery");
          }
       }
       return result;

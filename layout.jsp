@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ page import="java.sql.*" %>
-<%@ page import="DB.*" %>
-<%@ page import="Service.*" %>
 
 
 <html lang="ko">
@@ -31,47 +28,42 @@
       <![endif]-->
    </head>
    <body>
-      <%-- 로그인 엑세스가 필요한 페이지 입니다. --%>
-      <% if (session.getAttribute("auth") == null) response.sendRedirect("/BreadShuttle/"); %>
-
-      <div class="site-wrapper">
-
-         <div class="site-wrapper-inner">
-
-            <div class="cover-container">
-
-               <div class="masthead clearfix">
-                  <div class="inner">
-                     <a href="/BreadShuttle">
-                        <h2 class="masthead-brand">빵셔틀</h2>
-                     </a>
-                     <nav class="nav nav-masthead">
-                        <div class="col-md-9">
-                           <a class="nav-link" href="/BreadShuttle">Home</a>
-                           <a class="nav-link active" href="#">빵신청</a>
-                           <a class="nav-link" href="mypage">마이 페이지</a>
-                        </div>
-                        <div class="col-md-3">
-                           <a class="btn btn-primary" onclick="logOut()">로그아웃</a>
-                        </div>
-                     </nav>
-                  </div>
-               </div>
-
-               <div class="inner cover">
-
-               </div>
-
-               <div class="mastfoot">
-                  <div class="inner">
-                     <p>2016 Database Project <a href="/BreadShuttle">빵셔틀</a></p>
-                     <p>by <a href="#">이종현 이현석 이우진 정상현 이정한</a>.</p>
-                  </div>
-               </div>
+      <%-- 상단 고정된 네비게이션 바 --%>
+      <nav class="navbar navbar-inverse navbar-static-top">
+         <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+               </button>
+               <a class="navbar-brand" href="/BreadShuttle">빵셔틀</a>
             </div>
 
-         </div>
-      </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+               <ul class="nav navbar-nav">
+                  <% if ((session.getAttribute("auth") != null) && ((int) session.getAttribute("auth") == 1)) { %>
+                  <li><a class="nav-link" href="breadrequest">빵신청</a></li>
+                  <% } else if ((session.getAttribute("auth") != null) && ((int) session.getAttribute("auth") == 2)) { %>
+                  <li><a class="nav-link" href="breadmanage">빵관리</a></li>
+                  <% } %>
+               </ul>
+
+               <ul class="nav navbar-nav navbar-right">
+                  <% if (session.getAttribute("auth") == null) { %>
+                  <li><a class="nav-link" href="" data-toggle="modal" data-target=".signup-modal">회원가입</a></li>
+                  <% } else { %>
+                  <li><a class="nav-link" href="mypage">My Page</a></li>
+                  <% } %>
+                  <li><a href="#" onclick="logOut()">Sign Out</a></li>
+               </ul>
+            </div><!-- /.navbar-collapse -->
+         </div><!-- /.container-fluid -->
+      </nav>
+      <%-- / 상단 고정된 네비게이션 바 --%>
+
       <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
       <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->

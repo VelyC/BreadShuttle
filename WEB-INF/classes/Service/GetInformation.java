@@ -4,6 +4,7 @@ import Error.*;
 import java.sql.ResultSet;
 import Information.*;
 import DB.*;
+import java.util.ArrayList<E>;
 
 public class GetInformation {
 
@@ -145,10 +146,11 @@ public class GetInformation {
          try {
             String[] qsts = {id};
             rs = DBQuery
-                  .getResultSet(
-                     myDB.getConnection(),
-                     "select * from user natural join bakery where user.uid = ?",
-                     qsts);
+               .getResultSet(
+                  myDB.getConnection(),
+                  "select * from user natural join bakery where user.uid = ?",
+                  qsts
+               );
 
             rs.next();
 
@@ -166,5 +168,75 @@ public class GetInformation {
       }
 
       return bakery;
+   }
+
+   public static Bread[] breadsByID(DBManager myDB, String id) {
+      Bread[] breads = null;
+      ResultSet rs = null;
+
+      if (myDB != null) {
+         try {
+            String[] qsts = {id};
+            rs = DBQuery
+            .getResultSet(
+               myDB.getConnection(),
+               "select * from bread where uid = ?",
+               qsts
+            );
+
+            while (rs.next()) {
+               breads = Bread.addElement(breads, new Bread(rs.getString("uid"), rs.getString("name"), rs.getInt("price")));
+            }
+         } catch (Exception e) {
+            ErrorJsp error = new ErrorJsp(e, GetInformation.class, "breadsByID");
+         }
+      }
+      return breads;
+   }
+
+   public static Order[] orderedBreadByID(DBManager myDB, String id) {
+      Order[] orders = null;
+      ResultSet rs = null;
+
+      if (myDB != null) {
+         try {
+            String[] qsts = {id};
+            rs = DBQuery
+            .getResultSet(
+               myDB.getConnection(),
+               "select * from ordered where uid = ? order by deliverydate",
+               qsts
+            );
+
+            while (rs.next()) {
+               orders = Order.addElement(orders, new Order(rs.getString("bid"), rs.getString("uid"), rs.getString("breadname"), rs.getString("deliverydate"), rs.getString("oredereddate")));
+            }
+         } catch (Exception e) {
+            ErrorJsp error = new ErrorJsp(e, GetInformation.class, "ordersByID");
+         }
+      }
+      return orders;
+   }
+
+   public static String[] bakeryIDa(DBManager myDB) {
+      Bakery[] bakerys = null;
+      ResultSet rs = null;
+
+      if (myDB != null) {
+         try {
+            rs = DBQuery.getResultSet(
+               myDB.getConnection(),
+               "select * from bakery"
+            );
+
+            while (rs.next()) {
+               bakerys = Bakery.addElement(bakerys, new Bread())
+            }
+         } catch (Exception e) {
+            ErrorJSp error = new ErrorJsp(e, GetInformation.class, "bakeryNameByID");
+         }
+      }
+
+      return
    }
 }

@@ -28,102 +28,99 @@
       <![endif]-->
    </head>
    <body>
-      <div class="site-wrapper">
+      <% request.setCharacterEncoding("utf-8"); %>
+      <%-- 상단 고정된 네비게이션 바 --%>
+      <nav class="navbar navbar-inverse navbar-static-top">
+         <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+               </button>
+               <a class="navbar-brand" href="/BreadShuttle">빵셔틀</a>
+            </div>
 
-         <div class="site-wrapper-inner">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+               <ul class="nav navbar-nav">
+                  <% if ((session.getAttribute("auth") != null) && ((int) session.getAttribute("auth") == 1)) { %>
+                  <li><a class="nav-link" href="breadrequest">빵신청</a></li>
+                  <% } else if ((session.getAttribute("auth") != null) && ((int) session.getAttribute("auth") == 2)) { %>
+                  <li><a class="nav-link" href="breadmanage">빵관리</a></li>
+                  <% } %>
+               </ul>
 
-            <div class="cover-container">
+               <ul class="nav navbar-nav navbar-right">
+                  <% if (session.getAttribute("auth") == null) { %>
+                  <li><a class="nav-link" href="" data-toggle="modal" data-target=".signup-modal">Sign Up</a></li>
+                  <li><a class="nav-link" href="" data-toggle="modal" data-target=".signin-modal">Sign In</a></li>
+                  <% } else { %>
+                  <li><a class="nav-link" href="mypage">My Page</a></li>
+                  <li><a href="#" onclick="logOut()">Sign Out</a></li>
+                  <% } %>
+               </ul>
+            </div><!-- /.navbar-collapse -->
+         </div><!-- /.container-fluid -->
+      </nav>
+      <%-- / 상단 고정된 네비게이션 바 --%>
 
-               <div class="masthead clearfix">
-                  <div class="inner">
-                     <a href="/BreadShuttle">
-                        <h2 class="masthead-brand">빵셔틀</h2>
-                     </a>
-                     <nav class="nav nav-masthead">
-                        <div class="col-md-9">
-                           <a class="nav-link active" href="#">Home</a>
-                           <a class="nav-link" href="breadrequest">빵신청</a>
+      <div class="container">
 
-                           <% if (session.getAttribute("auth") == null) { %>
-                           <a class="nav-link" href="" data-toggle="modal" data-target=".signup-modal">회원가입</a>
-                           <% } else { %>
-                           <a class="nav-link" href="mypage">마이 페이지</a>
-                           <% } %>
-                        </div>
-                        <div class="col-md-3">
-                           <% if (session.getAttribute("auth") == null) { %>
-                           <button class="btn btn-primary" href="" data-toggle="modal" data-target=".login-modal">로그인</button>
-                           <% } else { %>
-                           <button class="btn btn-primary" href="" onclick="logOut()">로그아웃</button>
-                           <% } %>
-                        </div>
-                     </nav>
+         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+               <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+               <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+               <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+               <div class="item active">
+                  <img src="resources/image/bread1.jpg" alt="First slide" />
+                  <div class="carousel-caption">
+                     ...
                   </div>
                </div>
-
-               <div class="inner cover">
-                  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                     <!-- Indicators -->
-                     <ol class="carousel-indicators">
-                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                     </ol>
-
-                     <!-- Wrapper for slides -->
-                     <div class="carousel-inner" role="listbox">
-                        <div class="item active">
-                           <img src="resources/image/bread1.jpg" alt="First slide" />
-                           <div class="carousel-caption">
-                              ...
-                           </div>
-                        </div>
-                        <div class="item">
-                           <img src="resources/image/bread1.jpg" alt="Second slide" />
-                           <div class="carousel-caption">
-                              ...
-                           </div>
-                        </div>
-                        <div class="item">
-                           <img src="resources/image/bread1.jpg" alt="Third slide" />
-                           <div class="carousel-caption">
-                              ...
-                           </div>
-                        </div>
-                     </div>
-
-                     <!-- Controls -->
-                     <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                     </a>
-                     <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                     </a>
+               <div class="item">
+                  <img src="resources/image/bread1.jpg" alt="Second slide" />
+                  <div class="carousel-caption">
+                     ...
                   </div>
                </div>
-
-               <div class="mastfoot">
-                  <div class="inner">
-                     <p>2016 Database Project <a href="/BreadShuttle">빵셔틀</a></p>
-                     <p>by <a href="#">이종현 이현석 이우진 정상현 이정한</a>.</p>
+               <div class="item">
+                  <img src="resources/image/bread1.jpg" alt="Third slide" />
+                  <div class="carousel-caption">
+                     ...
                   </div>
                </div>
             </div>
 
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+               <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+               <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+               <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+               <span class="sr-only">Next</span>
+            </a>
          </div>
+
       </div>
 
-      <!-- login modal -->
-      <div class="modal fade login-modal" id="loingModal" tabindex="-1" role="dialog" aria-labelledby="loingModalLabel" aria-hidden="true">
+
+      <!-- Sign in modal -->
+      <div class="modal fade signin-modal" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
          <div class="modal-dialog">
             <div class="modal-content">
                <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="loingModalLabel">로그인 해주세요.</h4>
+                  <h4 class="modal-title" id="signInModalLabel">로그인 해주세요.</h4>
                </div>
-               <form action="/BreadShuttle/login" class="form-signin" method="post">
+               <form action="/BreadShuttle/signin" class="form-signin" method="post">
                   <div class="modal-body">
                      <label for="inputEmail">이메일</label>
                      <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus />
@@ -137,7 +134,8 @@
             </div>
          </div>
       </div>
-      <%-- /login modal --%>
+      <%-- /Sign in modal --%>
+
 
       <%-- sing up modal --%>
       <div class="modal fade signup-modal" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
@@ -152,11 +150,11 @@
                      <div class="form-group">
                         <div class="radio col-md-3 col-md-offset-2">
                            <label class="radio-inline" id="st">
-                              <input type="radio" name="stORba" id="stORba1" value="student" checked>
+                              <input type="radio" name="stORba" id="stORba1" value="student" checked />
                               학생
                            </label>
                            <label class="radio-inline" id="ba">
-                              <input type="radio" name="stORba" id="stORba2" value="bakery">
+                              <input type="radio" name="stORba" id="stORba2" value="bakery" />
                               빵집
                            </label>
                         </div>
@@ -179,10 +177,7 @@
                      <div class="form-group">
                         <label for="inputPasswordConfirm" class="col-md-2 col-md-offset-2" for="inputPasswordConfirm">비밀번호 확인</label>
                         <div class="col-md-5">
-                           <input type="password"
-                              name="password" id="inputPasswordConfirm" class="form-control"
-                              placeholder="비밀번호를 한번 더 입력 해주세요."
-                              data-toggle="popover" data-placement="left" data-content="비밀번호를 확인해주세요." required />
+                           <input type="password" name="password" id="inputPasswordConfirm" class="form-control" placeholder="비밀번호를 한번 더 입력 해주세요." data-toggle="popover" data-placement="left" data-content="비밀번호를 확인해주세요." required />
                         </div>
                      </div>
 
@@ -269,5 +264,6 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
       <!-- Custom java script -->
       <script src="resources/js/index.js"></script>
+      <script src="resources/js/logOut.js"></script>
    </body>
 </html>
