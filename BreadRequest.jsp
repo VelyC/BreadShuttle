@@ -275,24 +275,23 @@
             <h4 class="modal-title" id="breadModalLabel">빵</h4>
          </div>
 
-         <form action="/BreadShuttle/breadrequest" id="breadForm" class="form-horizontal" method="post">
+         <form action="/BreadShuttle/brd" id="breadForm" class="form-horizontal" method="post">
             <div class="modal-body">
 
                <div class="breadModalImage" id="divBreadImage">
                   <img src="" id="breadImage" alt="" width="140" height="200" class="img-rounded">
                </div>
 
-               <div>
+               <%-- <div>
                   <label for="selectBakery">빵집</label>
-                  <select id="selectBakery" class="form-control" name="">
+                  <select id="selectBakery" class="form-control" name=""> --%>
                      <%-- 현재 빵집을 뿌려주고 선택이 되면 id를 가져올 수 있도록 --%>
-                     <%
+                     <%-- <%
                      String bakeryID = null;
-                     String[] bakeryNames = GetInformation.bakeryNames(db);
                      %>
                   </select>
 
-               </div>
+               </div> --%>
 
                <div>
                   <label for="inputDeliveryDate">날짜</label>
@@ -304,8 +303,8 @@
                   <select id="selectBread" class="form-control" name="breadName">
                      <%
                      Bread[] breads = null;
-                     if (bakeryID != null) {
-                        breads = GetInformation.breadsByID(db, "powerbread@google.com");
+                     breads = GetInformation.breadsByID(db, "powerbread@google.com");
+                     if (breads != null) {
                         for (Bread bread : breads) {
                            out.println("<option value='"+bread.getName()+"'>"+bread.getName()+"</option>");
                         }
@@ -316,11 +315,12 @@
 
                <div id="divShowPrice">
                   <label for="inputSelect">가격</label>
-                  <input id="inputBreadPrice" class="form-control" type="text" name="inputBreadPrice" value="" readonly required>
+                  <input id="inputBreadPrice" class="form-control" type="text" name="breadPrice" value="" readonly required>
                </div>
+               <input id="addfix" type="text" name="addfix" class="hide" />
 
                <div class="modal-footer">
-                  <button type="submit" name="submit" class="btn btn-primary">회원 가입</button>
+                  <button type="submit" name="submit" class="btn btn-primary">확인</button>
                </div>
             </form>
          </div>
@@ -339,7 +339,9 @@
    <script type="text/javascript">
    function dateClick(date, breadName) {
       if (breadName == 'null') {
+         $('#addfix').val('add');
       } else {
+         $('#addfix').val('fix');
          $('#breadImage').show();
          $('#breadImage').attr('src','resources/image/'+breadName+'.jpg');
       }

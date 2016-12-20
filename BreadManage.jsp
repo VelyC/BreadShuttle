@@ -93,6 +93,12 @@
             int i = 1;
             %>
             <div class="table-body row">
+               <div class="row table-row">
+                  <form class="form-inline" action="breadremove" method="post">
+                     <input class="form-control" type="text" name="removebread" placeholder="삭제하려는 빵을 입력" required />
+                     <button class="btn btn-danger" type="submit" name="button"><span class="glyphicon glyphicon-trash"></span></button>
+                  </form>
+               </div>
                <div id="table-row-0" class="row add-bread table-row" onclick="breadAdd()">
                   <span class="glyphicon glyphicon-plus"></span>
                </div>
@@ -170,6 +176,9 @@
       <!-- Custom java script -->
       <script src="resources/js/logOut.js"></script>
       <script type="text/javascript">
+         $('#brnRemove').on('click', function () {
+            $('#remove').val('1');
+         });
          function breadAdd() {
             $('#breadModal').modal('toggle');
             $('#breadModal').find('img').attr('src', '');

@@ -20,6 +20,15 @@
 
 
    <servlet>
+      <servlet-name>BreadRemoveDummy</servlet-name>
+      <jsp-file>/BreadRemoveDummy.jsp</jsp-file>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>BreadRemoveDummy</servlet-name>
+      <url-pattern>/breadremove</url-pattern>
+   </servlet-mapping>
+
+   <servlet>
       <servlet-name>BreadFixDummy</servlet-name>
       <jsp-file>/BreadFixDummy.jsp</jsp-file>
    </servlet>
@@ -56,6 +65,16 @@
    <servlet-mapping>
       <servlet-name>BreadRequest</servlet-name>
       <url-pattern>/breadrequest</url-pattern>
+   </servlet-mapping>
+
+
+   <servlet>
+      <servlet-name>BreadRequestDummy</servlet-name>
+      <jsp-file>/BreadRequestDummy.jsp</jsp-file>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>BreadRequestDummy</servlet-name>
+      <url-pattern>/brd</url-pattern>
    </servlet-mapping>
 
 

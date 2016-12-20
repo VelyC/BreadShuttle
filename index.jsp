@@ -79,19 +79,31 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                <div class="item active">
-                  <img src="resources/image/bread1.jpg" alt="First slide" />
+                  <div class="row">
+                     <div class="col-md-5 col-md-offset-3">
+                        <img src="resources/image/마늘빵.jpg" alt="First slide" />
+                     </div>
+                  </div>
                   <div class="carousel-caption">
                      ...
                   </div>
                </div>
                <div class="item">
-                  <img src="resources/image/bread1.jpg" alt="Second slide" />
+                  <div class="row">
+                     <div class="col-md-5 col-md-offset-3">
+                        <img src="resources/image/속이꽉찬단팥빵.jpg" alt="Second slide" />
+                     </div>
+                  </div>
                   <div class="carousel-caption">
                      ...
                   </div>
                </div>
                <div class="item">
-                  <img src="resources/image/bread1.jpg" alt="Third slide" />
+                  <div class="row">
+                     <div class="col-md-5 col-md-offset-3">
+                        <img src="resources/image/치즈가부드러운시간.jpg" alt="Third slide" />
+                     </div>
+                  </div>
                   <div class="carousel-caption">
                      ...
                   </div>

@@ -4,7 +4,6 @@ import Error.*;
 import java.sql.ResultSet;
 import Information.*;
 import DB.*;
-import java.util.ArrayList<E>;
 
 public class GetInformation {
 
@@ -180,7 +179,7 @@ public class GetInformation {
             rs = DBQuery
             .getResultSet(
                myDB.getConnection(),
-               "select * from bread where uid = ?",
+               "select * from bread where uid = ? order by name",
                qsts
             );
 
@@ -218,25 +217,5 @@ public class GetInformation {
       return orders;
    }
 
-   public static String[] bakeryIDa(DBManager myDB) {
-      Bakery[] bakerys = null;
-      ResultSet rs = null;
 
-      if (myDB != null) {
-         try {
-            rs = DBQuery.getResultSet(
-               myDB.getConnection(),
-               "select * from bakery"
-            );
-
-            while (rs.next()) {
-               bakerys = Bakery.addElement(bakerys, new Bread())
-            }
-         } catch (Exception e) {
-            ErrorJSp error = new ErrorJsp(e, GetInformation.class, "bakeryNameByID");
-         }
-      }
-
-      return
-   }
 }
